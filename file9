@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  vars:
+   companyname: Gayatri Juwels
+  tasks:
+  - name: Install Apache HTTP server
+    yum: name=httpd state=latest
+  - name: Start the HTTP server
+    service: name=httpd enabled=yes state=started
+  - name: copy the index.html file
+    template:
+     src: index.html
+     dest: /var/www/html/index.html
+...
